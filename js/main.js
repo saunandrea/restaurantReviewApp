@@ -1,15 +1,4 @@
 
-console.log('outside register');
-(function () {
-  console.log('attempting to register');
-  if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/sw.js').then(function () {
-      console.log('Registration worked!')
-    }).catch(function () {
-      console.log('Registration failed')
-    })
-  }
-})();
 
 let restaurants,
   neighborhoods,
@@ -174,6 +163,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = `Photograph of ${restaurant.name}`;
   li.append(image);
 
   const div = document.createElement('div');
