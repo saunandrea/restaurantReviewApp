@@ -13,7 +13,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added 
   fetchNeighborhoods();
   fetchCuisines();
+  addTabIndexToMap();
 });
+
+addTabIndexToMap = () => {
+  document.getElementsByClassName('leaflet-control-zoom-in')[0].tabIndex = "2";
+  document.getElementsByClassName("leaflet-control-zoom-out")[0].tabIndex = "3";
+}
 
 /**
  * Fetch all neighborhoods and set their HTML.

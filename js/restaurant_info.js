@@ -6,7 +6,13 @@ var newMap;
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
+  addTabIndexToMap();
 });
+
+addTabIndexToMap = () => {
+  document.getElementsByClassName('leaflet-control-zoom-in')[0].tabIndex = "2";
+  document.getElementsByClassName("leaflet-control-zoom-out")[0].tabIndex = "3";
+}
 
 /**
  * Initialize leaflet map
@@ -88,6 +94,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.alt = `Photograph of ${restaurant.name}`;
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -126,7 +133,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
